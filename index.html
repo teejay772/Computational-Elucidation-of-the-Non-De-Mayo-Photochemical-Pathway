@@ -1370,8 +1370,142 @@
             </div>
         </div>
         
-        <!-- Slide 13: Summary and Impact -->
+        <!-- Slide 13: Computational Chemistry Studies -->
         <div class="slide" id="slide13">
+            <h1>Proposed Computational Chemistry Studies</h1>
+            <p style="text-align: center; color: #546e7a; font-size: 20px;">Theoretical Validation of ESIPT Mechanism and Transition States</p>
+            
+            <div style="background: linear-gradient(135deg, #1a237e 10%, #3949ab 100%); color: white; padding: 30px; border-radius: 15px; margin: 30px 0;">
+                <h2 style="color: white; text-align: center; border: none;">Transition State Calculations</h2>
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <h3 style="color: #b3e5fc;">Method: M06-2X/6-311++G(d,p)</h3>
+                    <div style="font-family: 'Courier New', monospace; background: #263238; padding: 15px; border-radius: 8px; margin: 15px 0;">
+                        <code style="color: #4caf50;"># m062x/6-311++G(d,p) opt=(calcfc,qst2,noeigen) freq=noraman scrf=(smd,solvent=methanol)</code>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                        <div>
+                            <h4 style="color: #c8e6c9;">Key Parameters:</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li>• <strong>M06-2X:</strong> Excellent for main-group thermochemistry</li>
+                                <li>• <strong>6-311++G(d,p):</strong> Triple-ζ with diffuse & polarization</li>
+                                <li>• <strong>QST2:</strong> Synchronous transit-guided quasi-Newton</li>
+                                <li>• <strong>SMD:</strong> Solvation model (methanol)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 style="color: #c8e6c9;">Expected Outcomes:</h4>
+                            <ul style="list-style: none; padding: 0;">
+                                <li>• Confirm enaminone 4a as the true intermediate</li>
+                                <li>• Activation energy (ΔG‡)</li>
+                                <li>• IRC validation of pathway</li>
+                                <li>• Vibrational mode analysis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); padding: 30px; border-radius: 15px;">
+                <h2 style="color: #2e7d32; text-align: center;">TD-DFT Calculations for Excited States</h2>
+                <div style="background: white; padding: 20px; border-radius: 10px; margin-top: 20px;">
+                    <h3 style="color: #1b5e20;">Method: ωB97X-D/aug-cc-pVTZ</h3>
+                    <div style="font-family: 'Courier New', monospace; background: #f5f5f5; padding: 15px; border-radius: 8px; margin: 15px 0; color: #37474f;">
+                        <code># td=(nstates=10) wb97xd/aug-cc-pvtz scrf=(smd,solvent=methanol)</code>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 25px;">
+                        <div style="background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: #1565c0;">Before ESIPT (S₁)</h4>
+                            <p style="font-weight: bold; color: #0d47a1;">N-H···O Configuration</p>
+                            <p style="color: #37474f;">Normal enaminone - Intramolecular H-bonded</p>
+                            <ul style="list-style: none; padding: 0; margin-top: 15px;">
+                                <li><strong>Key Analysis:</strong></li>
+                                <li>• N-H bond length</li>
+                                <li>• H···O distance</li>
+                                <li>• N-H-O angle</li>
+                                <li>• Dipole moment: μ₁</li>
+                                <li>• HOMO-LUMO gap</li>
+                                <li>• Oscillator strength</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); padding: 20px; border-radius: 10px;">
+                            <h4 style="color: #e65100;">After ESIPT (S₁)</h4>
+                            <p style="font-weight: bold; color: #bf360c;">N···H-O Configuration</p>
+                            <p style="color: #37474f;">int-imine - Proton transferred tautomer</p>
+                            <ul style="list-style: none; padding: 0; margin-top: 15px;">
+                                <li><strong>Key Analysis:</strong></li>
+                                <li>• O-H bond length</li>
+                                <li>• N···H distance</li>
+                                <li>• N-H-O angle</li>
+                                <li>• Dipole moment: μ₂ (Δμ change)</li>
+                                <li>• Charge redistribution</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: 30px;">
+                <h4>Computational Workflow Summary</h4>
+                <div style="display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 15px; flex-wrap: wrap;">
+                    <div style="background: white; padding: 10px 20px; border-radius: 8px;">
+                        <strong>1. Ground State Optimization</strong>
+                    </div>
+                    <span style="color: #ff6b6b;">→</span>
+                    <div style="background: white; padding: 10px 20px; border-radius: 8px;">
+                        <strong>2. TD-DFT Excitation</strong>
+                    </div>
+                    <span style="color: #ff6b6b;">→</span>
+                    <div style="background: white; padding: 10px 20px; border-radius: 8px;">
+                        <strong>3. S₁ Optimization</strong>
+                    </div>
+                    <span style="color: #ff6b6b;">→</span>
+                    <div style="background: white; padding: 10px 20px; border-radius: 8px;">
+                        <strong>4. TS Search (QST2)</strong>
+                    </div>
+                    <span style="color: #ff6b6b;">→</span>
+                    <div style="background: white; padding: 10px 20px; border-radius: 8px;">
+                        <strong>5. IRC Validation</strong>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 15px; color: #795548;">
+                    These calculations will provide definitive theoretical support for the ESIPT mechanism and confirm enaminone 4a as the key intermediate
+                </p>
+            </div>
+            
+            <div style="background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%); padding: 30px; border-radius: 15px; margin-top: 30px;">
+                <h2 style="color: #7b1fa2; text-align: center;">Next Steps: Advanced Multiconfigurational Methods</h2>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 25px;">
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h3 style="color: #6a1b9a;">CASSCF/CASPT2 Calculations</h3>
+                        <ul style="list-style: none; padding: 0; color: #37474f;">
+                            <li><strong>Purpose:</strong></li>
+                            <li>• Accurate multireference treatment</li>
+                            <li>• Conical intersection characterization</li>
+                            <li>• Correct description of bond breaking/forming</li>
+                            <li>• Static correlation effects</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="background: white; padding: 20px; border-radius: 10px;">
+                        <h3 style="color: #6a1b9a;">NAMD Simulations</h3>
+                        <p style="color: #37474f; font-weight: bold;">Non-Adiabatic Molecular Dynamics</p>
+                        <ul style="list-style: none; padding: 0; color: #37474f; margin-top: 10px;">
+                            <li><strong>Objectives:</strong></li>
+                            <li>• Real-time ESIPT dynamics</li>
+                            <li>• Surface hopping trajectories</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 20px; color: #6a1b9a; font-weight: bold;">
+                    CASSCF/CASPT2 + NAMD will provide complete dynamical picture of the ESIPT pathway
+                </p>
+            </div>
+        </div>
+        
+        <!-- Slide 14: Summary and Impact -->
+        <div class="slide" id="slide14">
             <h1>Summary: Revolutionary Discovery in Photochemistry</h1>
             <p style="text-align: center; color: #546e7a; font-size: 20px;">First Major Change to De Mayo Reaction in 60 Years</p>
             
@@ -1479,7 +1613,7 @@
     
     <script>
         let currentSlide = 1;
-        const totalSlides = 13;
+        const totalSlides = 14;
         
         function showSlide(n) {
             const slides = document.querySelectorAll('.slide');
