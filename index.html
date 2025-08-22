@@ -100,6 +100,29 @@
             border-radius: 20px;
             font-weight: 600;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+        
+        .fullscreen-btn {
+            position: fixed;
+            top: 30px;
+            right: 150px;
+            background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(25, 118, 210, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        
+        .fullscreen-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(25, 118, 210, 0.4);
+            background: linear-gradient(135deg, #2196f3 0%, #1976d2 100%);
         }
         
         h1 {
@@ -452,6 +475,7 @@
 <body>
     <div class="presentation">
         <div class="slide-number" id="slideNumber">Slide 1 / 13</div>
+        <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶ Fullscreen</button>
         
         <!-- Slide 1: Title Slide -->
         <div class="slide active" id="slide1">
@@ -463,9 +487,6 @@
                     <p style="font-size: 22px; color: #37474f; font-weight: 600;">Nimasha Thejani</p>
                     <p style="font-size: 18px; color: #546e7a;">Lopez Group</p>
                 </div>
-            </div>
-            <div class="slide-footer" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #546e7a; font-size: 14px;">
-                1
             </div>
         </div>
         
@@ -508,9 +529,6 @@
                 <h4>The De Mayo Legacy</h4>
                 <p style="color: #795548;">"Epochal impact" • Seminal role in photochemistry • Unchanged for 60 years until 2021 breakthrough</p>
                 <p style="color: #795548; margin-top: 10px;"><strong>Impact:</strong> Thousands of papers & applications</p>
-            </div>
-            <div class="slide-footer" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #546e7a; font-size: 14px;">
-                2
             </div>
         </div>
         
@@ -711,9 +729,6 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #546e7a; font-size: 14px;">
-                5
-            </div>
         </div>
         
         <!-- Slide 6: Product Gallery -->
@@ -767,9 +782,6 @@
             <div class="highlight-box" style="margin-top: 30px;">
                 <h4>Key Structural Features</h4>
                 <p>All products contain: Bicyclic dihydropyran core • NH group • Stereocenters • Functional handles for derivatization</p>
-            </div>
-            <div class="slide-footer" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #546e7a; font-size: 14px;">
-                6
             </div>
         </div>
         
@@ -869,9 +881,6 @@
                     <li>❌ NOT traditional De Mayo behavior</li>
                 </ul>
             </div>
-            <div class="slide-footer" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #546e7a; font-size: 14px;">
-                7
-            </div>
         </div>
         
         <!-- Slide 8: Enaminone Discovery -->
@@ -961,9 +970,6 @@
                     <li>• Selective excitation at 350 nm</li>
                     <li style="margin-top: 10px; font-weight: bold;">4a = True Chromophore</li>
                 </ul>
-            </div>
-            <div class="slide-footer" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #546e7a; font-size: 14px;">
-                8
             </div>
         </div>
         
@@ -1056,9 +1062,6 @@
             
             <div style="background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%); padding: 20px; border-radius: 15px; margin-top: 30px; text-align: center;">
                 <h2 style="color: #c62828; border: none;">⚠️ NOT a De Mayo Reaction - Enaminone-Mediated Pathway Confirmed!</h2>
-            </div>
-            <div class="slide-footer" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #546e7a; font-size: 14px;">
-                9
             </div>
         </div>
         
@@ -1180,9 +1183,6 @@
                     </div>
                 </div>
             </div>
-            <div class="slide-footer" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #546e7a; font-size: 14px;">
-                10
-            </div>
         </div>
         
         <!-- Slide 11: Complete Mechanistic Model -->
@@ -1287,9 +1287,6 @@
                         <p><strong>Kinetics:</strong> Ultrafast process</p>
                     </div>
                 </div>
-            </div>
-            <div class="slide-footer" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #546e7a; font-size: 14px;">
-                11
             </div>
         </div>
         
@@ -1414,9 +1411,6 @@
                     <li>✓ Rearomatization drives reaction forward</li>
                     <li>✓ Single-step transformation from planar to bicyclic</li>
                 </ul>
-            </div>
-            <div class="slide-footer" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: #546e7a; font-size: 14px;">
-                12
             </div>
         </div>
         
@@ -1775,10 +1769,24 @@
             showSlide(currentSlide);
         }
         
+        function toggleFullscreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen().catch(err => {
+                    alert(`Error attempting to enable fullscreen: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+        
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
             if (e.key === 'ArrowRight') nextSlide();
             if (e.key === 'ArrowLeft') previousSlide();
+            if (e.key === 'f' || e.key === 'F') toggleFullscreen();
+            if (e.key === 'Escape' && document.fullscreenElement) {
+                document.exitFullscreen();
+            }
         });
         
         // Initialize
